@@ -6,13 +6,15 @@
     (let [[xs1 xs2] (if (<= (compare (first s1) (first s2)) 0) [s1 s2] [s2 s1])]
       (cons (first xs1) (sm (rest xs1) xs2)))))
 
+(defn ^:private halves [s]
+   (let [mid (int (/ (count s) 2))]
+     [(take mid s) (drop mid s)]))
+
 ; Theta (n*lg(n))
 (defn merge-sort [s]
   (if (<= (count s) 1)
     s
-    (let [mid (int (/ (count s) 2))
-          left (take mid s)
-          right (drop mid s)]
+    (let [[left right] (halves s)]
       (sm (merge-sort left) (merge-sort right)))))
 
 (merge-sort [3 2 4 1])
