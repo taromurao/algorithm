@@ -10,14 +10,14 @@
    (let [mid (int (/ (count s) 2))]
      [(take mid s) (drop mid s)]))
 
-; Theta (n*lg(n))
+; Source: http://academicearth.org/courses/introduction-to-algorithms/
+; Theta(n*lg(n))
 (defn merge-sort [s]
   (if (<= (count s) 1)
     s
     (let [[left right] (halves s)]
       (sm (merge-sort left) (merge-sort right)))))
 
-(merge-sort [3 2 4 1])
-(merge-sort `(3 2 4 1))
-(merge-sort [:c :b :a])
-(merge-sort ["hello" "Dolly"])
+; Source: http://academicearth.org/courses/introduction-to-algorithms/
+; Theta(log(n))
+(defn binary-sort [s])
