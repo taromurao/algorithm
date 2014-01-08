@@ -8,14 +8,14 @@
 
 (defn ^:private halves [s]
    (let [mid (int (/ (count s) 2))]
-     [(take mid s) (drop mid s)]))
+     (split-at mid s)))
 
 ; Source: http://academicearth.org/courses/introduction-to-algorithms/
 ; Theta(n*lg(n))
 (defn merge-sort [s]
   (if (<= (count s) 1)
     s
-    (let [[left right] (halves s)]
+    (let [[left right] (lazy-seq (halves s))]
       (sm (merge-sort left) (merge-sort right)))))
 
 ; Source: http://academicearth.org/courses/introduction-to-algorithms/
