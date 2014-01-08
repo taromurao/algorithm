@@ -20,4 +20,12 @@
 
 ; Source: http://academicearth.org/courses/introduction-to-algorithms/
 ; Theta(log(n))
-(defn binary-sort [s])
+(defn binary-sort [s]
+  (if (empty? s) 
+    s
+    (let [mid (first s)
+          [left right]
+          ((juxt filter remove) (partial >= mid) (rest s))]
+      (concat (binary-sort left) [mid] (binary-sort right)))))
+
+(time (merge-sort [3 2 1]))
