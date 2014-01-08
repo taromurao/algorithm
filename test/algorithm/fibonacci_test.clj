@@ -8,8 +8,8 @@
 (deftest fn-fib
   (check-fib fib))
 
-(deftest fn-fib-memoize
-  (check-fib fib-memoize))
+(deftest fn-fib-memo
+  (check-fib fib-memo))
 
 (deftest fn-fib-tco
   (check-fib fib-tco))

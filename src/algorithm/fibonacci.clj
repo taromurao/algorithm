@@ -18,6 +18,7 @@
     1 1
     (+ (fib (- n 1)) (fib (- n 2)))))
 
-(defn fib-memoize [n])
+(def fib-memo (memoize fib))
 
 (defn fib-tco [n])
+
