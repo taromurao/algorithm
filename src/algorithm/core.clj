@@ -5,5 +5,6 @@
   (:use criterium.core))
 
 (defn -main []
+  ;(with-progress-reporting (bench (merge-sort data/int-vector))))
   (with-progress-reporting (bench (binary-sort data/int-vector))))
 
