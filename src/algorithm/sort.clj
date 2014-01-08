@@ -3,7 +3,7 @@
 (defn ^:private sm [s1 s2]
   (if (some empty? [s1 s2])
     (if (empty? s1) s2 s1)
-    (let [[xs1 xs2] (if (<= (compare (first s1) (first s2)) 0) [s1 s2] [s2 s1])]
+    (let [[xs1 xs2] (if (<= (first s1) (first s2)) [s1 s2] [s2 s1])]
       (cons (first xs1) (sm (rest xs1) xs2)))))
 
 (defn ^:private halves [s]
