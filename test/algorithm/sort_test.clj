@@ -4,10 +4,10 @@
   (:use [clojure.string :as str]))
 
 (deftest numerical-vector
-  (is (= [1 2 3] (merge-sort [2 3 1]))))
+  (is (= [1 1 2 3] (merge-sort [2 1 3 1]))))
 
 (deftest keyword-vector
-  (is (= [:a :b :c] (merge-sort [:a :b :c]))))
+  (is (= [:a :a :b :c] (merge-sort [:b :a :c :a]))))
 
 (deftest string-vector
   (is (=
