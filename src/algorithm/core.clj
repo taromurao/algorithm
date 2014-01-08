@@ -1,13 +1,9 @@
 (ns algorithm.core
   (:gen-class)
-  (:require [algorithm.sort :refer :all])
+  (:require [algorithm.sort :refer :all]
+            [algorithm.sample-data :as data])
   (:use criterium.core))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  ;; work around dangerous default behaviour in Clojure
-  (alter-var-root #'*read-eval* (constantly false))
-  (println "Hello, World!"))
+(defn -main []
+  (with-progress-reporting (bench (binary-sort data/int-vector))))
 
-(with-progress-reporting (bench (merge-sort [3 2 1]) :verbose))
