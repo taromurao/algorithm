@@ -11,6 +11,9 @@
 (deftest fn-fib-memo
   (check-fib fib-memo))
 
+(deftest fn-fib-chris
+  (check-fib fib-chris))
+
 (deftest fn-fib-tco
   (check-fib fib-tco))
 

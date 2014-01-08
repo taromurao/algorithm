@@ -9,4 +9,5 @@
   ;(with-progress-reporting (bench (merge-sort data/int-vector))))
   ;(with-progress-reporting (bench (binary-sort data/int-vector))))
   ;(with-progress-reporting (bench (fib 20))))
-  (with-progress-reporting (bench (fib-memo 20))))
+  ;(with-progress-reporting (bench (fib-memo 20))))
+  (with-progress-reporting (bench (fib-chris 20))))
