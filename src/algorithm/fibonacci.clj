@@ -1,5 +1,6 @@
 (ns algorithm.fibonacci)
 
+; Theta(fib(n))?
 ; Evaluation count : 49200 in 60 samples of 820 calls.
 ;              Execution time mean : 1.238113 ms
 ;     Execution time std-deviation : 50.578746 µs
@@ -18,6 +19,7 @@
     1 1
     (+ (fib (- n 1)) (fib (- n 2)))))
 
+; Theta(n)
 ; Evaluation count : 956366520 in 60 samples of 15939442 calls.
 ;              Execution time mean : 59.562877 ns
 ;     Execution time std-deviation : 1.004405 ns
@@ -45,5 +47,25 @@
         (map first (iterate (fn [[a b]] [b (+ a b)]) [1 1]))]
     (nth fib-seq n)))
 
-(defn fib-tco [n])
+; Theoretically Theta(n), but with tail call optimization ;-)
+; Source "Joy of Clojure"
+; This algorithm is blazing fast,
+; but the n at the end of letfn function looks pretty much an optimization-artifact.
+; Evaluation count : 88839240 in 60 samples of 1480654 calls.
+;              Execution time mean : 666.023709 ns
+;     Execution time std-deviation : 9.258185 ns
+;    Execution time lower quantile : 650.920248 ns ( 2.5%)
+;    Execution time upper quantile : 683.418877 ns (97.5%)
+;                    Overhead used : 2.908973 ns
+; 
+; Found 1 outliers in 60 samples (1.6667 %)
+;   low-severe   1 (1.6667 %)
+;  Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+(defn fib-tco [n]
+  (letfn [(fib' [current next n]
+            (if (zero? n)
+              next
+              (recur next (+ current next) (dec n))))]
+    (fib' 0 1 n))) ; In order to support larger numbers, we should use bigints.
 
