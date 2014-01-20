@@ -8,6 +8,6 @@
 (deftest test-merge-sort
   (check merge-sort))
 
-(deftest test-binary-sort
-  (check binary-sort))
+(deftest test-quick-sort
+  (check quick-sort))
 
